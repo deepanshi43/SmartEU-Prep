@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEU-Prep</title>
+    <link rel="stylesheet" href="/CSS/aiQuiz.css">
+    
+</head>
+<body>
+    <div class="header-container">
+  <img src="../Images/SmartEU-Prep (1).png" alt="SmartEU-Prep" class="logo">
+
+  <!-- Hamburger Button -->
+  <button class="hamburger" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+
+  <nav class="navbar">
+            <ul class="nav-listItems">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                <a href="#">Interviews</a>
+                <ul class="dropdown-menu">
+  <li><a href="#" data-role="teaching">Teaching</a></li>
+  <li><a href="#" data-role="hr">HR</a></li>
+  <li><a href="#" data-role="accountant">Accountant</a></li>
+  <li id="sub-dropdown" onclick="dropdown(event)">
+    <a href="#">IT Department <span class="arrow">&#9654;</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#" data-role="analyst">Analyst</a></li>
+      <li><a href="#" data-role="hw">Hardware Engineer</a></li> 
+      <li><a href="#" data-role="web developer">Web Developer</a></li>
+    </ul>
+  </li>
+  <li><a href="#" data-role="management">Management</a></li>
+</ul>
+
+                </li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="loginPage.html">Login</a></li>
+            </ul>
+          </nav>
+</div>
+
+    <div class="interview-container">
+        <h2 class="form-heading">Customized Quizes</h2>
+        <p class="form-subtext">Generate the quiz with the uploaded file and the number of questions you want.</p>
+    <form class="interview-form" id="quizForm" action="http://localhost/AIQUIZ/generate_quiz.php" method="post">
+    <label for="no-of-ques"> 
+        <span>Number of Questions (1 to 10):</span><br>
+        <input type="number" id="no-of-ques" name="no-of-ques" min="1" max="10" required>
+    </label>
+
+    <label for="language">
+        <span>Preferred Language:</span><br>
+        <select id="language" name="language" required>
+            <option value="">-- Select Language --</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+        </select>
+    </label>
+
+    <!-- ✅ Submit button -->
+    <button type="submit" class="submit-btn">Generate Quiz</button>
+</form>
+
+       
+    </div>
+    
+<footer>
+        <div> <span><a href="aboutUs.html">About us</a></span> | <span><a href="contactUs.html">Contact us</a></span> | <span><a href="policies.html">Policies</a></span></div>
+        <p>&copy; 2025 Copyright SmartEU-Prep
+            All rights are reserved. </p>
+    </footer>
+    <script src="/JS/aiQuiz.js"></script>
+     <script>
+  const hamburger = document.querySelector('.hamburger');
+  const navList = document.querySelector('.nav-listItems');
+
+  hamburger.addEventListener('click', () => {
+    navList.classList.toggle('show');
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('[data-role]');
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const jobRole = e.target.getAttribute('data-role');
+        let questions = [];
+
+  switch (jobRole) {
+    case "teaching":
+      questions = [
+        "How do you handle a disruptive student in class?",
+        "Describe your teaching philosophy.",
+        "How do you integrate technology into your lessons?",
+        "How do you assess student progress?",
+        "What would you do if a student isn't performing well?"
+      ];
+      break;
+    case "hr":
+      questions = [
+        "Tell me about yourself.",
+        "How do you handle conflict?",
+        "What are your strengths?",
+        "Why should we hire you?",
+        "Where do you see yourself in 5 years?"
+      ];
+      break;
+    case "accountant":
+      questions = [
+        "What accounting software are you proficient in?",
+        "How do you handle tight deadlines during audits?",
+        "Explain the difference between accounts payable and receivable.",
+        "What steps do you take to avoid errors in your work?",
+        "How do you prepare a budget?"
+      ];
+      break;
+    case "analyst":
+      questions = [
+        "Describe how you conduct data analysis.",
+        "What tools do you use for visualization?",
+        "Explain a time you made a recommendation based on data.",
+        "What is regression analysis?",
+        "How do you validate data accuracy?"
+      ];
+      break;
+    case "hw":
+      questions = [
+        "What are the main components of a motherboard?",
+        "Explain the difference between RAM and ROM.",
+        "How do you troubleshoot a non-booting system?",
+        "What's your experience with circuit design?",
+        "What are POST codes in BIOS?"
+      ];
+      break;
+    case "web":
+      questions = [
+        "What is the difference between HTML and XHTML?",
+        "Explain the DOM structure.",
+        "What is event delegation in JavaScript?",
+        "How does async/await work?",
+        "Explain responsive design."
+      ];
+      break;
+    case "mangt":
+      questions = [
+        "How do you manage a team under pressure?",
+        "Describe a successful project you managed.",
+        "How do you handle resource conflicts?",
+        "What tools do you use for project tracking?",
+        "How do you motivate team members?"
+      ];
+      break;
+    default:
+      questions = [
+        "Why are you interested in this role?",
+        "Describe a challenge you've overcome.",
+        "What are your greatest strengths?",
+        "Tell me about a project you led.",
+        "How do you handle pressure?"
+      ];
+  }
+
+  // Encode and redirect
+  const encodedData = btoa(JSON.stringify(questions));
+  window.location.href = `interview.html?data=${encodedData}`;
+});
+
+})});
+</script>
+</body>
+</html>
+

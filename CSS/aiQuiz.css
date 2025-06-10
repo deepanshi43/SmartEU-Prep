@@ -1,0 +1,276 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.5;
+    background: linear-gradient(to bottom right , skyblue,white);
+   
+    min-height: 100vh;
+   
+}
+
+.header-container{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:white;
+    color:#050536;
+    height: 70px;
+    
+    
+}
+.nav-listItems{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.nav-listItems li{
+    list-style: none;
+    margin: 20px;
+}
+.nav-listItems li a{
+text-decoration:none;
+font-size:large;
+color:black;
+font-weight:bold;
+}
+.nav-listItems li a:hover{
+    text-decoration: underline;
+}
+
+.header-container img{
+    margin-top: 100px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 2.8px 5px black;
+    border-color: rgb(209, 122, 16);
+    
+}
+
+
+.interview-container {
+   
+    max-width: 500px;
+    margin: 150px auto;
+    padding: 30px;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    
+}
+
+.form-heading {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px #ccc;
+}
+.form-heading:hover{
+    text-decoration: underline;
+}
+.form-subtext {
+    text-align: center;
+    color:black;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.interview-form label {
+    display: block;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.interview-form input[type="text"],
+.interview-form input[type="file"],
+.interview-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+.interview-form input[type="text"]:focus,
+.interview-form input[type="file"]:focus {
+    border: 1px solid #030303;
+    outline: none;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #0e335b;
+   
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #315378;
+    transform: scale(1.03);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    text-align: center;
+    background-color: rgb(7, 7, 70);
+    padding: 30px;
+    color: aliceblue;
+}
+
+footer div span a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+
+/* Hamburger button - hidden by default */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 15;
+}
+
+/* Media query for screen width below 700px */
+@media (max-width: 700px) {
+
+  /* Header container layout - logo left, hamburger right */
+  .header-container {
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 60px;
+    position: relative;
+  }
+
+  /* Smaller logo */
+  .header-container img.logo {
+    height: 110px;
+    width: 110px;
+    margin-top: 2.7rem;
+    border-radius: 50%;
+    box-shadow: 2.8px 5px black;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  /* Nav menu - hidden by default */
+  .nav-listItems {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Show nav when toggled */
+  .nav-listItems.show {
+    display: flex;
+  }
+
+  /* Nav list items vertical spacing */
+  .nav-listItems li {
+    margin: 15px 0;
+  }}
+
+  @media (max-width: 700px) {
+  .interview-container input[type="number"],
+  .interview-container input[type="text"] {
+    width: 80%; /* or any smaller width you want */
+    font-size: 14px; /* optionally reduce font size */
+    padding-left: 15px; /* optionally reduce padding */
+
+  }
+  
+  .interview-container {
+    padding: 10px; /* optional: reduce padding */
+    margin-left:40px;
+     margin-right:40px;
+
+  }
+
+  .interview-container .form-heading {
+    font-size: 1.4rem; /* smaller heading */
+  }
+  .interview-form{
+    padding-left:3rem;
+  }
+  .submit-btn{
+    width: 40%;
+    margin-left:65px;
+    margin-right:50px
+  }
+}
+
+.interview-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border 0.3s ease;
+}
+
+.interview-form select:focus {
+    border: 1px solid #030303;
+    outline: none;
+}
+@media (max-width: 700px) {
+  .interview-form select {
+    width: 80%;
+    font-size: 14px;
+    padding-left: 15px;
+  }
+}
+
+

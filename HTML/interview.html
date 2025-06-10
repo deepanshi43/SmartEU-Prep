@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Interview | SmartEU Prep</title>
+  <link rel="stylesheet" href="/CSS/interview.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    .interview-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+    }
+
+    .video-preview {
+      border: 3px solid #0e335b;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 60%;
+      max-width: 600px;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    .controls button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #0e335b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      background-color: #007bff;
+    }
+
+    .question-box {
+      margin-top: 40px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      width: 70%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .message {
+      margin-bottom: 20px;
+      font-size: 18px;
+      text-align: center;
+      color: #333;
+    }
+    .icon-button {
+  background-color: #0e335b;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  background-color: #007bff;
+}
+
+.icon-button.off {
+  background-color: #a00;
+}
+
+.icon-button i {
+  pointer-events: none;
+}
+.question-box {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 30px 25px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-left: 5px solid #0e335b;
+}
+
+.question-heading {
+  color: #0e335b;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.question-text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.question-btn {
+  background-color: #0e335b;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.question-btn:hover {
+  background-color: #007bff;
+  transform: scale(1.03);
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="header-container">
+    <img src="../Images/SmartEU-Prep (1).png" alt="SmartEU-Prep" class="logo">
+    <button class="hamburger">&#9776;</button>
+    <nav class="navbar">
+      <ul class="nav-listItems">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Interviews</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Teaching</a></li>
+            <li><a href="#">HR</a></li>
+            <li><a href="#">Accountant</a></li>
+            <li id="sub-dropdown" onclick="dropdown(event)">
+              <a href="#">IT Department <span class="arrow">&#9654;</span></a>
+              <ul class="sub-dropdown-menu">
+                <li><a href="#">Analyst</a></li>
+                <li><a href="#">Hardware Engineer</a></li>
+                <li><a href="#">Web Developer</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Management</a></li>
+          </ul>
+        </li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="loginPage.html">Login</a></li>
+      </ul>
+    </nav>
+    <div class="theme-switch-wrapper">
+  <label class="theme-switch" for="checkbox">
+    <input type="checkbox" id="checkbox" />
+    <span class="slider round"></span>
+  </label>
+  <span id="theme-icon">☀️</span>
+</div>
+  </div>
+
+  <div class="interview-main">
+    <div class="message">🔒 Please allow access to your <strong>camera and microphone</strong> to continue the interview setup.</div>
+    
+    <video id="video" class="video-preview" autoplay muted playsinline></video>
+
+    <div class="controls">
+  <button id="cameraBtn" onclick="toggleCamera()" class="icon-button">
+    <i id="cameraIcon" class="fas fa-video"></i>
+  </button>
+  <button id="micBtn" onclick="toggleMic()" class="icon-button">
+    <i id="micIcon" class="fas fa-microphone"></i>
+  </button>
+</div>
+
+
+    <div class="question-box">
+  <h3 class="question-heading">📝 Interview Questions</h3>
+  <p id="question-display" class="question-text">Loading question...</p>
+  <button id="nextBtn" class="question-btn" onclick="showNextQuestion()">Next Question</button>
+</div>
+
+
+
+<script>
+
+    const hamburger = document.querySelector('.hamburger');
+  const navList = document.querySelector('.nav-listItems');
+
+  hamburger.addEventListener('click', () => {
+    navList.classList.toggle('show');
+  });
+
+         
+  const checkbox = document.getElementById("checkbox");
+  const icon = document.getElementById("theme-icon");
+
+  checkbox.addEventListener("change", () => {
+    document.body.classList.toggle("dark-theme");
+    icon.textContent = document.body.classList.contains("dark-theme") ? "🌙" : "☀️";
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdown = document.querySelector('.dropdown > a');
+    const menu = document.querySelector('.dropdown-menu');
+
+    dropdown.addEventListener('click', function (e) {
+      e.preventDefault();
+      menu.classList.toggle('show');
+    });
+  });
+
+
+function dropdown(e) {
+   e.stopPropagation(); // optional: prevents bubbling if needed
+
+  const content = e.currentTarget;
+  const subMenu = content.querySelector('.sub-dropdown-menu');
+  const arrow = content.querySelector('.arrow');
+
+  if (subMenu) {
+    subMenu.classList.toggle('show');
+    arrow.classList.toggle('rotate');
+  }
+}
+
+let stream, videoTrack, audioTrack;
+let currentQuestion = 0;
+let questions = [];
+
+async function startMedia() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    document.getElementById('video').srcObject = stream;
+    videoTrack = stream.getVideoTracks()[0];
+    audioTrack = stream.getAudioTracks()[0];
+  } catch (err) {
+    alert("Access to camera/mic denied.");
+    console.error("Media error:", err);
+  }
+}
+
+function toggleCamera() {
+  if (videoTrack) videoTrack.enabled = !videoTrack.enabled;
+}
+
+function toggleMic() {
+  if (audioTrack) audioTrack.enabled = !audioTrack.enabled;
+}
+
+function getQuestionsFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get('data');
+  if (data) {
+    try {
+      return JSON.parse(atob(data));
+    } catch (e) {
+      console.error("Decode error:", e);
+      return [];
+    }
+  }
+  return [];
+}
+
+function showNextQuestion() {
+  const questionEl = document.getElementById('question-display');
+  const nextBtn = document.getElementById('nextBtn');
+
+  if (currentQuestion < questions.length) {
+    questionEl.textContent = `${currentQuestion + 1}. ${questions[currentQuestion]}`;
+
+    if (currentQuestion === questions.length - 1) {
+      nextBtn.textContent = "Submit";
+    }
+
+    currentQuestion++;
+  } else {
+    questionEl.textContent = "✅ Thank you! Interview completed.";
+    nextBtn.disabled = true;
+    // Optional: trigger save or redirect
+    // submitInterview();
+  }
+}
+
+
+window.onload = () => {
+  startMedia();
+  questions = getQuestionsFromURL();
+  if (questions.length > 0) {
+    showNextQuestion();
+  } else {
+    document.getElementById('question-display').textContent = "No questions found.";
+  }
+};
+
+function toggleCamera() {
+  if (videoTrack) {
+    videoTrack.enabled = !videoTrack.enabled;
+    const camIcon = document.getElementById('cameraIcon');
+    const camBtn = document.getElementById('cameraBtn');
+    if (videoTrack.enabled) {
+      camIcon.className = 'fas fa-video';
+      camBtn.classList.remove('off');
+    } else {
+      camIcon.className = 'fas fa-video-slash';
+      camBtn.classList.add('off');
+    }
+    updateAccessMessage();
+  }
+}
+
+function toggleMic() {
+  if (audioTrack) {
+    audioTrack.enabled = !audioTrack.enabled;
+    const micIcon = document.getElementById('micIcon');
+    const micBtn = document.getElementById('micBtn');
+    if (audioTrack.enabled) {
+      micIcon.className = 'fas fa-microphone';
+      micBtn.classList.remove('off');
+    } else {
+      micIcon.className = 'fas fa-microphone-slash';
+      micBtn.classList.add('off');
+    }
+    updateAccessMessage();
+  }
+}
+function updateAccessMessage() {
+  const messageEl = document.querySelector('.message');
+
+  if (!videoTrack?.enabled && !audioTrack?.enabled) {
+    messageEl.textContent = "🔒 Please allow access to your camera and microphone to continue the interview setup.";
+  } else if (!videoTrack?.enabled) {
+    messageEl.textContent = "🔒 Please allow access to your camera.";
+  } else if (!audioTrack?.enabled) {
+    messageEl.textContent = "🔒 Please allow access to your microphone.";
+  } else {
+    messageEl.textContent = ""; // Hide message when both are enabled
+  }
+}
+window.onload = async () => {
+  await startMedia();
+  questions = getQuestionsFromURL();
+  updateAccessMessage(); // <- Add this
+
+  if (questions.length > 0) {
+    showNextQuestion();
+  } else {
+    document.getElementById('question-display').textContent = "No questions found.";
+  }
+};
+
+</script>
+
+
+
+</body>
+</html>

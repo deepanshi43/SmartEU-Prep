@@ -1,0 +1,450 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.5;
+   
+}
+.header-container{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:white;
+    color:#050536;
+    height: 70px;
+    
+    
+}
+.nav-listItems{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+    
+}
+.nav-listItems li{
+    list-style: none;
+    
+     position: relative;
+  margin: 0 20px;
+}
+.nav-listItems li a{
+
+font-size:large;
+
+ text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  font-weight: bold;
+  color: black;
+}
+.nav-listItems li a:hover{
+    text-decoration: underline;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+  z-index: 999;
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+  white-space: nowrap;
+  color: black;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+
+.sub-dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.sub-dropdown-menu.show {
+  display: block;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(90deg);
+}
+
+.header-container img{
+    margin-top: 100px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 2.8px 5px black;
+    border-color: rgb(209, 122, 16);
+    
+}
+hr{
+color: blue;
+}
+/* Privacy Section */
+.privacy-section {
+  padding: 10rem;
+}
+.imgPolicy{
+    display: flex;
+     margin-top: 3.5rem;
+     gap:4px;
+     margin-left: 2.5rem;
+}
+.privacy-container{
+text-align: center;
+}
+.privacy-heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom:0.8rem ;
+}
+
+.privacy-text {
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Image */
+.image-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+
+.policy-image {
+  max-width: 700px;
+  height: 290px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  animation: pulseZoom 4s ease-in-out infinite;
+}
+
+@keyframes pulseZoom {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+/* Policy Cards */
+.policy-details {
+  max-width: 400px;
+  margin: auto;
+}
+
+.policy-card {
+  background-color: white;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px #0000001a;
+   border-left: solid rgb(139, 200, 238) 9px;
+}
+
+.policy-title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  gap:7px; /* ✅ horizontal gap between children */
+ 
+}
+
+.policy-title span {
+    padding-left: 1.3rem;
+    font-size: 1.2rem;
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  user-select: none;
+}
+.policy-title .headClass{
+    padding-left: 100px;
+   
+}
+
+.policy-text {
+  display: none;
+  margin-top: 0.8rem;
+  color: #333;
+}
+
+.policy-text.visible {
+  display: block;
+}
+
+footer{
+    margin-top: 100px;
+    text-align: center;
+    background-color: rgb(7, 7, 70);
+    padding: 30px;
+    bottom: 0%;
+    position: relative;
+    color: aliceblue;
+    div span a{
+
+        color: aliceblue;
+    }
+}
+
+
+
+/* 1. Stack image and cards vertically on screens smaller than 1245px */
+@media (max-width: 1245px) {
+  .imgPolicy {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 2rem;
+  }
+
+  .policy-details {
+    max-width: 90%;
+    width: 100%;
+  }
+
+  .policy-image {
+    width: 90%;
+    height: auto;
+  }
+}
+
+/* Hamburger button - hidden by default  */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 15;
+}
+/* Media query for screen width below 700px */
+@media (max-width: 700px) {
+
+  /* Header container layout - logo left, hamburger right */
+  .header-container {
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 60px;
+    position: relative;
+  }
+
+  /* Smaller logo */
+  .header-container img.logo {
+   height: 110px;
+    width: 110px;
+    margin-top: 2.7rem;
+    border-radius: 50%;
+    box-shadow: 2.8px 5px black;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  /* Nav menu - hidden by default */
+  .nav-listItems {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Show nav when toggled */
+  .nav-listItems.show {
+    display: flex;
+  }
+
+  /* Nav list items vertical spacing */
+  .nav-listItems li {
+    margin: 15px 0;
+  } 
+  
+}
+
+/* --- Theme Switcher --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+@media (max-width: 700px) {
+  .theme-switch-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    position: static; /* ← important: removes absolute positioning */
+    width: 100%;
+    margin-top: 10px;
+    background: none;
+    z-index: auto;
+  }
+}
+
+
+.theme-switch {
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 50px;
+    margin-right: 8px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    position: absolute;
+    inset: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: white;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    bottom: 4px;
+    left: 4px;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+#theme-icon {
+    font-size: 18px;
+}
+
+/* --- Dark Theme --- */
+.dark-theme {
+    background-color: black !important;
+    
+    color: white;
+}
+
+/* Do NOT change cards (they are already blue) */
+.dark-theme .policy-card {
+    background: #e3f2fd !important;
+    color: black !important;
+}
+
+/* Make text in white area turn white */
+
+.dark-theme .image-container,
+.dark-theme .policy-text,
+.dark-theme .policy-title {
+    color: black !important;
+}
+.dark-theme .privacy-section{
+    background-color: black;
+    
+}
+.dark-theme .privacy-text{
+    color: white;
+}
+
+
+/* Keep heading blue */
+.dark-theme .privacy-heading {
+    
+    color: #79e9ff;
+  text-shadow: 2px 2px rgb(185, 19, 207);
+}
+
+/* Keep navbar white */
+.dark-theme .header-container {
+    background-color: white !important;
+    color: black !important;
+}
+
+.dark-theme .nav-listItems li a {
+    color: black !important;
+}
+
+/* Footer becomes black */
+.dark-theme footer {
+    background-color:  rgb(57, 55, 55)  !important;
+    color: white !important;
+}
+
+.dark-theme footer div span a {
+    color: white !important;
+}
+

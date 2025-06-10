@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Analysis Result</title>
+  <link rel="stylesheet" href="CSS/Analyzing.css">
+</head>
+<body>
+
+  <div class="result-container">
+    <h2>Your Resume Has Been Successfully Analyzed!</h2>
+
+    <div class="result-content">
+      <div class="resume-section">
+        <img id="resumeImg" class="resume-image" src="" alt="Resume Preview" />
+      </div>
+      <div class="questions-section">
+        <h3>Suggestions to Improve Your Resume</h3>
+        <ul id="questionsList"></ul>
+      </div>
+    </div>
+    <div>
+        <p>Click the button below to start building your resume.</p>
+    <button class="btn-build">Build Resume</button></div>
+  </div>
+
+  <script>
+    const role = localStorage.getItem('selectedRole');
+
+    const roleData = {
+      teaching: {
+        image: "../Images/teaching.jpg",
+        questions: [
+          "Include a summary highlighting your teaching philosophy.",
+          "Mention certifications like B.Ed or CTET clearly.",
+          "Add measurable results (e.g., improved student grades).",
+          "Use active verbs like 'developed', 'facilitated', 'evaluated'.",
+          "Mention experience with digital/online teaching tools."
+        ]
+      },
+      hr: {
+        image: "../Images/hr.jpg",
+        questions: [
+          "Highlight employee engagement strategies used.",
+          "Mention HR software/tools you’re skilled with.",
+          "Include successful recruitment campaigns or metrics.",
+          "Add any conflict resolution or training experiences.",
+          "Keep your resume clean with action-oriented language."
+        ]
+      },
+      accountant: {
+        image: "../Images/accountant.jpg",
+        questions: [
+          "Highlight accuracy and attention to detail in financial reports.",
+          "Mention tools like Tally, QuickBooks, or Excel expertise.",
+          "Add measurable achievements (e.g., reduced audit time).",
+          "Include compliance and tax regulation knowledge.",
+          "Use financial action words like 'analyzed', 'audited', 'forecasted'."
+        ]
+      },
+      webdeveloper: {
+        image: "../Images/webdeveloper.jpg",
+        questions: [
+          "Showcase your portfolio links or GitHub projects.",
+          "Mention frameworks like React, Angular, or Vue.",
+          "Emphasize responsive and accessible design skills.",
+          "List key backend/frontend tools you’ve mastered.",
+          "Include any live web app links or personal projects."
+        ]
+      },
+      management: {
+        image: "../Images/manager.jpg",
+        questions: [
+          "Highlight leadership achievements and team sizes.",
+          "Mention tools like Trello, Jira, or Asana for project tracking.",
+          "Quantify results (e.g., 'increased productivity by 25%').",
+          "Show experience in budgeting or cross-functional coordination.",
+          "Include certifications like PMP, Scrum Master, etc."
+        ]
+      }
+    };
+
+    if (role && roleData[role]) {
+      document.getElementById("resumeImg").src = roleData[role].image;
+      const questionsList = document.getElementById("questionsList");
+
+      roleData[role].questions.forEach((q, index) => {
+        const li = document.createElement("li");
+        li.textContent = q;
+        li.style.animationDelay = `${index * 0.3}s`; // Delay each item
+        questionsList.appendChild(li);
+      });
+    } else {
+      document.querySelector(".result-container").innerHTML = "<h2>Invalid Role Selection</h2>";
+    }
+  </script>
+</body>
+</html>
+
+

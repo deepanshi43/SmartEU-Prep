@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEU-Prep</title>
+    <link rel="stylesheet" href="/CSS/mockInterview.css">
+</head>
+<body>
+    <div class="header-container">
+        <img src="../Images/SmartEU-Prep (1).png" alt="SmartEU-Prep" class="logo">
+        
+          
+         <nav class="navbar">
+            <ul class="nav-listItems">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                <a href="#">Interviews</a>
+                <ul class="dropdown-menu">
+  <li><a href="#" data-role="teaching">Teaching</a></li>
+  <li><a href="#" data-role="hr">HR</a></li>
+  <li><a href="#" data-role="accountant">Accountant</a></li>
+  <li id="sub-dropdown" onclick="dropdown(event)">
+    <a href="#">IT Department <span class="arrow">&#9654;</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#" data-role="analyst">Analyst</a></li>
+      <li><a href="#" data-role="hw">Hardware Engineer</a></li> 
+      <li><a href="#" data-role="web developer">Web Developer</a></li>
+    </ul>
+  </li>
+  <li><a href="#" data-role="management">Management</a></li>
+</ul>
+
+                </li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="loginPage.html">Login</a></li>
+            </ul>
+          </nav>
+            
+      </div>
+
+
+    <div class="interview-container">
+        <h2 class="form-heading">Prepare for Your Interview</h2>
+        <p class="form-subtext">Provide details about your desired job role and upload your resume to get started.</p>
+    
+        <form class="interview-form" >
+            <label for="job-role"> 
+                <span>Job Role/Job Position:</span><br>
+                <label for="job-role">
+                  <select name="job" id="job-role" required>
+                    <option value="" disabled selected>Select a job role</option>
+                    <option value="teaching">Teaching</option>
+                    <option value="hr">HR</option>
+                    <option value="accountant">Accountant</option>
+                    <option value="analyst">Analyst</option>
+                    <option value="hw">Hardware Engineer</option>
+                    <option value="web">Web Developer</option>
+                    <option value="mangt">Management</option>
+                  </select>
+                </label>
+            </label>
+    
+            <label for="yearOfExp"> 
+                <span>Years of Experience:</span><br>
+                <input type="text" id="yearOfExp" required>
+            </label>
+    
+            <label for="job_desc"> 
+                <span>Job Description:</span><br>
+                <input type="text" id="job_desc" required>
+            </label>
+    
+            <!-- <label for="resume_upload"> 
+                <span>Upload Your Resume:</span><br>
+                <input type="file" id="resume_upload" required>
+            </label> -->
+    
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="theme-switch-wrapper">
+  <label class="theme-switch" for="checkbox">
+    <input type="checkbox" id="checkbox" />
+    <span class="slider round"></span>
+  </label>
+  <span id="theme-icon">☀</span>
+</div>
+    
+    <footer>
+        <div> <span><a href="aboutUs.html">About us</a></span>|<span><a href="contactUs.html">Contact us</a></span>|<span><a href="policies.html">Policies</a></span></div>
+        <p>&copy; 2025 Copyright SmartEU-Prep
+            All rights are reserved. </p>
+    </footer>
+    <script src="/JS/mock_interview.js"></script>
+
+</body>
+</html>

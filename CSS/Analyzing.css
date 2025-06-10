@@ -1,0 +1,122 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e6f0fa, #ffffff);
+      padding: 40px 20px;
+      color: #222;
+    }
+
+    .result-container {
+      max-width: 850px;
+      margin: auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-container h2 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: #103f6e;
+      text-align: center;
+    }
+
+    .result-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .resume-image {
+        padding-left: 20px;
+      width: 85%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: contain;
+    }
+
+    .resume-section, .questions-section {
+      flex: 1 1 48%;
+    }
+
+    .questions-section h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      color: #0e365d;
+    }
+
+    .questions-section ul {
+      padding-left: 20px;
+    }
+
+    .questions-section ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-build {
+      display: block;
+     margin-top: 10px;
+     margin-bottom: 0;
+     margin-left:590px;
+      padding: 10px 26px;
+      background-color: #103f6e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-build:hover {
+      background-color: #0b2e51;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .result-content {
+        flex-direction: column;
+      }
+
+      .resume-section,
+      .questions-section {
+        flex: 1 1 100%;
+      }
+
+      .questions-section ul {
+        padding-left: 0;
+      }
+
+      .questions-section {
+        text-align: center;
+      }
+    }
+
+    .result-container p{
+         margin-left:40px;
+         font-size: large;
+    }
+  

@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom right, skyblue, white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  max-width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  color: #050536;
+  height: 70px;
+  z-index: 5;
+  position: relative;
+}
+
+.nav-listItems {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 5;
+}
+
+.nav-listItems li {
+  list-style: none;
+  margin: 20px;
+}
+
+.nav-listItems li a {
+  text-decoration: none;
+  font-size: large;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-listItems li a:hover {
+  text-decoration: underline;
+}
+
+.header-container img {
+  margin-top: 100px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 2.8px 5px black;
+  border-color: rgb(209, 122, 16);
+}
+
+/* Resume Analyzer Section */
+.resume-analyzer-wrapper {
+  max-width: 900px;
+  margin: 190px auto;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 10px;
+  z-index: 1;
+}
+
+.resume-analyzer-header {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-left: 60px;
+}
+
+.resume-analyzer-header h3 {
+  font-size: 2.1rem;
+  margin: 0;
+}
+
+.resume-analyzer-header p {
+  color: black;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.resume-analyzer-card {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px 30px;
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.upload-btn-wrapper {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 100px;
+  padding-left: 50px;
+}
+
+.upload-btn-wrapper button {
+  background-color: #3f3f3f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn-wrapper button:hover {
+  background-color: #4f4b4b;
+}
+
+.animated-text {
+  font-size: 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid #000;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.6s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 86%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 200px;
+  text-align: center;
+  background-color: rgb(7, 7, 70);
+  padding: 30px;
+  position: relative;
+  color: aliceblue;
+}
+
+footer div span a {
+  color: aliceblue;
+}
+
+/* Media Queries */
+@media (max-width: 950px) {
+  .resume-analyzer-card {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+
+  .resume-analyzer-card form {
+    padding: 1rem 40px;
+    margin: -20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .form-group,
+  .upload-btn-wrapper {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .upload-btn-wrapper {
+    margin-top: 0;
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upload-btn-wrapper button {
+    width: 100%;
+  }
+
+  .animated-text {
+    animation: none;
+    width: auto;
+    border-right: none;
+    white-space: normal;
+  }
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  z-index: 15;
+}
+
+@media (max-width: 700px) {
+  .header-container {
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 60px;
+    position: relative;
+  }
+
+  .header-container img.logo {
+    height: 110px;
+    width: 110px;
+    margin-top: 2.7rem;
+    border-radius: 50%;
+    box-shadow: 2.8px 5px black;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  .nav-listItems {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-listItems.show {
+    display: flex;
+  }
+
+  .nav-listItems li {
+    margin: 15px 0;
+  }
+}
+
+/* Select Option Styling */
+.selectOption {
+  margin-top: 3%;
+  margin-left: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.selectOption select {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 110%;
+  max-width: 500px;
+  border-radius: 6px;
+  background-color: #fff;
+  z-index: 1;
+  position: relative;
+}
+
+.selectOption select:focus {
+  outline: none;
+  border-color: #888;
+}
+
+

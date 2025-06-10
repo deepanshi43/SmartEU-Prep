@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEU-Prep</title>
+    <link rel="stylesheet" href="/CSS/index.css">
+     
+</head>
+<body>
+    <div class="header-container">
+  <img src="../Images/SmartEU-Prep (1).png" alt="SmartEU-Prep" class="logo">
+
+  <!-- Hamburger Button -->
+  <button class="hamburger" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+
+    <nav class="navbar">
+            <ul class="nav-listItems">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                <a href="#">Interviews</a>
+                <ul class="dropdown-menu">
+  <li><a href="#" data-role="teaching">Teaching</a></li>
+  <li><a href="#" data-role="hr">HR</a></li>
+  <li><a href="#" data-role="accountant">Accountant</a></li>
+  <li id="sub-dropdown" onclick="dropdown(event)">
+    <a href="#">IT Department <span class="arrow">&#9654;</span></a>
+    <ul class="sub-dropdown-menu">
+      <li><a href="#" data-role="analyst">Analyst</a></li>
+      <li><a href="#" data-role="hw">Hardware Engineer</a></li> 
+      <li><a href="#" data-role="web developer">Web Developer</a></li>
+    </ul>
+  </li>
+  <li><a href="#" data-role="management">Management</a></li>
+</ul>
+
+                </li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="loginPage.html">Login</a></li>
+            </ul>
+          </nav>
+           <div class="theme-switch-wrapper">
+  <label class="theme-switch" for="checkbox">
+    <input type="checkbox" id="checkbox" />
+    <span class="slider round"></span>
+  </label>
+  <span id="theme-icon">☀️</span>
+</div>
+</div>
+    <hr>
+    <div class="sub-header">
+      <div>
+        <h2>Welcome to the SmartEU-Prep</h2>
+        <p>"Where AI turns Aspirations into Achievements!"</p>
+        
+        <button onclick="scrollToCards()" class="start-button">Start</button>
+
+      </div>
+      <br>
+        <div><img src="../Images/homePage Image.jpeg" alt="Image"></div>
+        
+        
+    </div>
+    <div class="card-container" id="cards">
+        <div  class="quiz-card">
+          <img src="../Images/aiquiz.jpeg" alt="AI-Quiz">
+             <div>
+                <h4>
+                  AI-Powered Quizes
+                </h4>
+                <p>
+                  Test your knowledge with quizzes.Instant feedback and detailed explanations.
+                </p>
+                <p class="card-heading">
+                  <b>Customized Quizzes</b>
+                </p>
+                <a href="aiQuiz.html">
+                  <button type="button"   class="btoon">Start Quiz </button></a>
+                <button type="button" class="learn-button">Learn More</button>
+             </div>
+          </div>
+          <div class="resumeAnalyzer-card">
+            <img src="../Images/resumeanalyzer.jpeg" alt="Resume-Analyser">
+
+            <div>
+                  <h4>
+                    Resume Analyser
+                  </h4>
+                  <p>
+                    Boost your career with AI-powered resume analysis for a standout CV!"
+                  </p>
+                  <p class="card-heading">
+                   <b>Smart CV</b>
+                  </p>
+                  <a href="resumeAnalyzer.html"><button type="button" class="AI-button">AI Resume Check </button></a>
+                  
+               </div>
+            </div>
+            <div class="mockInterview-card">
+              <img src="../Images/mockinterview.jpeg" alt="Mock-Interview">
+               <div>
+                  <h4>
+                    Mock Interview
+                  </h4>
+                  <p>
+                    "Master your interviews with AI-driven mock sessions and real-time feedback!"
+                  </p>
+                  <p class="card-heading">
+                    <b>Personalized Interview Experience</b>
+                    
+                  </p>
+                  <a href="mock_interview.html"><button type="button " class="btoon">Trial Interview </button></a>
+                  <button type="button" class="learn-button">Learn More</button>
+               </div>
+            </div>
+      
+    </div>
+    <div class="testimonials">
+  <h4>Real success, Real stories — be the next to ace your interview!</h4>
+</div>
+
+<div class="testimonials-list" id="dynamic-testimonials">
+  <!-- Dynamic testimonials will load here -->
+</div>
+
+    <a href="feedback.html"><button type="button" class="feedback-button">Share Your Thoughts</button></a>
+    <footer>
+        <div> <span><a href="aboutUs.html">About us</a></span> | <span><a href="contactUs.html">Contact us</a></span> | <span><a href="policies.html">Policies</a></span></div>
+        <p>&copy; 2025 Copyright SmartEU-Prep
+            All rights are reserved. </p>
+    </footer>
+    <script src="/JS/index.js"></script>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("dynamic-testimonials");
+    if (container) {
+      fetch("http://localhost/TESTI/load_dynamic_testimonials.php")
+        .then(response => response.text())
+        .then(data => {
+          container.innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error loading testimonials:", error);
+        });
+    }
+  });
+
+</script>
+
+
+
+
+
+<!-- 
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('../LOGIN/session_check.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data.loggedIn) {
+            alert('You are logged in as ' + data.user);
+
+            // Hide Login and Register buttons
+            document.querySelectorAll('a[href="loginPage.html"], a[href="register.html"]').forEach(el => {
+              el.style.display = 'none';
+            });
+
+            // Show Logout button if it exists
+            const logoutLink = document.getElementById('logoutLink');
+            if (logoutLink) logoutLink.style.display = 'inline';
+          }
+        })
+        .catch(err => console.error("Session check failed", err));
+    });
+    </script> -->
+
+    <script>
+  fetch("../LOGIN/session_check.php")
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn) {
+        alert("You are logged in as " + data.user);
+        document.querySelectorAll('a[href="loginPage.html"], a[href="register.html"]').forEach(el => el.style.display = 'none');
+        const logoutLink = document.getElementById('logoutLink');
+        if (logoutLink) logoutLink.style.display = 'inline';
+      }
+    });
+
+    
+</script>
+
+
+
+
+
+    
+</body>
+</html>
